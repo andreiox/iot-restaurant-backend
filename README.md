@@ -28,13 +28,13 @@ Then access <http://127.0.0.1:8000/api/>
 
 ### Entidades
 
-1. Clients
+1. **Clients 🗸**
     - id
     - rfid
     - name
     - balance
 
-2. Transactions
+2. **Transactions 🗸**
     - id
     - date
     - value
@@ -42,8 +42,8 @@ Then access <http://127.0.0.1:8000/api/>
 
 ### Funcionalidades
 
-1. Escrever models
-2. Migrate models
-3. Definir endpoints
-4. Integrar docker
-5. Subir AWS
+1. **Escrever models 🗸**
+2. **Migrate models 🗸**
+3. **Definir custom endpoints 🗸**
+4. **Integrar docker ✕**
+5. **Subir AWS ✕**

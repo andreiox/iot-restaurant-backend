@@ -1,3 +1,8 @@
+import json
+import decimal
+import datetime
+
+from django.utils import timezone
 from django.shortcuts import render
 
 from rest_framework import viewsets
@@ -40,9 +45,18 @@ class TransactionViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class CustomView(APIView):
-    def get(self, request, format=None):
-        return Response("Some Get Response")
-
+class MakeTransactionView(APIView):
     def post(self, request, format=None):
-        return Response("Some Post Response")
+        body = json.loads(request.body)
+
+        value = body['value']
+        date = datetime.datetime.now(tz=timezone.utc)
+        client = Client.objects.get(pk=body['client_id'])
+
+        t = Transaction(date=date, value=body['value'], client=client)
+        t.save()
+
+        client.balance += decimal.Decimal(body['value'])
+        client.save()
+
+        return Response(TransactionSerializer(t).data)
