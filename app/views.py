@@ -36,7 +36,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
 
     def get_queryset(self):
-        queryset = Transaction.objects.all().order_by('id')
+        queryset = Transaction.objects.all().order_by('-id')
 
         client_id = self.request.query_params.get('client_id', None)
         if client_id is not None:
