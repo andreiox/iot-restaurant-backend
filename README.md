@@ -46,4 +46,4 @@ Then access <http://127.0.0.1:8000/api/>
 2. **Migrate models 🗸**
 3. **Definir custom endpoints 🗸**
 4. **Integrar docker ✕**
-5. **Subir AWS ✕**
+5. **Subir AWS 🗸**
