@@ -51,7 +51,7 @@ class MakeTransactionView(APIView):
 
         value = body['value']
         date = datetime.datetime.now(tz=timezone.utc)
-        client = Client.objects.get(pk=body['client_id'])
+        client = Client.objects.get(rfid=body['rfid'])
 
         t = Transaction(date=date, value=body['value'], client=client)
         t.save()
