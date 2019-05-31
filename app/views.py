@@ -23,7 +23,11 @@ class ClientViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Client.objects.all().order_by('id')
 
+        cpf = self.request.query_params.get('cpf', None)
         rfid = self.request.query_params.get('rfid', None)
+
+        if cpf is not None:
+            queryset = queryset.filter(cpf=cpf)
         if rfid is not None:
             queryset = queryset.filter(rfid=rfid)
 
@@ -39,6 +43,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
         queryset = Transaction.objects.all().order_by('-id')
 
         client_id = self.request.query_params.get('client_id', None)
+
         if client_id is not None:
             queryset = queryset.filter(client_id=client_id)
 

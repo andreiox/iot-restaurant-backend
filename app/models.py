@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Client(models.Model):
-    rfid = models.CharField(max_length=255)
+    cpf = models.CharField(max_length=255, unique=True)
+    rfid = models.CharField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     balance = models.DecimalField(max_digits=8, decimal_places=2)
 
